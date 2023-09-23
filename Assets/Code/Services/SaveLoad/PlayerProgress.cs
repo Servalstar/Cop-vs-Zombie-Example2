@@ -1,7 +1,9 @@
-﻿namespace Services.SaveLoad
+﻿using Services.SaveLoad.Contracts;
+
+namespace Services.SaveLoad
 {
-    public class PlayerProgress
+    public class PlayerProgress : IPlayerProgress
     {
-        public int BestResult;
+        public int BestResult { get; set; }
     }
 }

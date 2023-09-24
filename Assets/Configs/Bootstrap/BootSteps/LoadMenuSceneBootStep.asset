@@ -12,4 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8246eff8edb34c4abfd7537437666d91, type: 3}
   m_Name: LoadMenuSceneBootStep
   m_EditorClassIdentifier: 
-  _sceneName: 
+  _sceneName: Menu

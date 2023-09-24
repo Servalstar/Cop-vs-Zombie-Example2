@@ -19,12 +19,12 @@ namespace Services.Bootstrap.BootSteps
             }
             
             var asyncOperation = SceneManager.LoadSceneAsync(_sceneName);
-
+            
             while (!asyncOperation.isDone)
             {
                 await Task.Yield();
             }
-
+            
             return true;
         }
     }

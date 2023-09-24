@@ -6,8 +6,12 @@ namespace Services.Bootstrap
 {
     public class BootstrapService : IBootstrapService
     {
+        public bool IsExecuted { get; private set; }
+        
         public async void Execute(BootStepsContainer bootStepsContainer)
         {
+            IsExecuted = true;
+            
             foreach (var bootStep in bootStepsContainer.BootSteps)
             {
                 var isSuccessful = await bootStep.Execute();

@@ -19,9 +19,11 @@ namespace Services.Bootstrap.BootSteps
         
         public override async Task<bool> Execute()
         {
-            await _windowsController.Open<PrivacyWindowPresenter, PrivacyWindow>();
-
-            return await Task.FromResult(true);
+            var awaiter = new TaskCompletionSource<bool>();
+            await _windowsController.Open<PrivacyWindowPresenter, PrivacyWindow>(awaiter);
+            await awaiter.Task;
+            
+            return awaiter.Task.Result;
         }
     }
 }

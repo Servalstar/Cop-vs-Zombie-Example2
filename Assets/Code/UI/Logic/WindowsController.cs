@@ -14,8 +14,13 @@ public class WindowsController
         where TPresenter : BaseWindowPresenter<TView> where TView : BaseWindow
     {
         var window = await _windowsFactory.GetWindow<TPresenter, TView>();
-        
-        // Set Root UI
         window.Open();
+    }
+    
+    public async Task Open<TPresenter, TView>(TaskCompletionSource<bool> awaiter) 
+        where TPresenter : BaseWindowPresenter<TView> where TView : BaseWindow
+    {
+        var window = await _windowsFactory.GetWindow<TPresenter, TView>();
+        window.Open(awaiter);
     }
 }

@@ -1,3 +1,4 @@
+using System.Threading.Tasks;
 using UI.View;
 using UnityEngine;
 
@@ -10,15 +11,17 @@ public class PrivacyWindowPresenter : BaseWindowPresenter<PrivacyWindow>
         _view = view;
         base.SetView(view);
     }
-    
-    public override void Open()
+
+    public override void Open(TaskCompletionSource<bool> awaiter)
     {
+        _awaiter = awaiter;
         _view.Open(new PrivacyWindow.Data(AcceptPrivacy));
     }
-    
+
     private void AcceptPrivacy()
     {
         Debug.Log("Accepted");
+        _awaiter.SetResult(true);
         Close();
     }
 }

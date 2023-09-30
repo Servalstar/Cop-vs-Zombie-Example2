@@ -1,10 +1,10 @@
 using UI.View;
 
-public class BaseWindowController<T> where T : BaseWindow
+public abstract class BaseWindowPresenter<T> where T : BaseWindow
 {
-    private readonly T _view;
-    
-    protected BaseWindowController(T view)
+    private T _view;
+
+    public virtual void SetView(T view)
     {
         _view = view;
     }

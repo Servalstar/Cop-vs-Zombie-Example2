@@ -17,11 +17,11 @@ namespace Services.Bootstrap.BootSteps
             _assetProvider = assetProvider;
         }
 
-        public override Task<bool> Execute()
+        public override async Task<bool> Execute()
         {
             _assetProvider.Initialize();
             
-            return Task.FromResult(true);
+            return await Task.FromResult(true);
         }
     }
 }

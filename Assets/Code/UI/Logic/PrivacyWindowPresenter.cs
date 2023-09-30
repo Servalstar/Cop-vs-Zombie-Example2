@@ -1,15 +1,16 @@
 using UI.View;
 using UnityEngine;
 
-public class PrivacyWindowController : BaseWindowController<PrivacyWindow>
+public class PrivacyWindowPresenter : BaseWindowPresenter<PrivacyWindow>
 {
-    private readonly PrivacyWindow _view;
-    
-    public PrivacyWindowController(PrivacyWindow view) : base(view)
+    private PrivacyWindow _view;
+
+    public override void SetView(PrivacyWindow view)
     {
         _view = view;
+        base.SetView(view);
     }
-
+    
     public override void Open()
     {
         _view.Open(new PrivacyWindow.Data(AcceptPrivacy));

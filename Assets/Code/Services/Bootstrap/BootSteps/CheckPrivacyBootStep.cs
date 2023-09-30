@@ -9,17 +9,17 @@ namespace Services.Bootstrap.BootSteps
     [CreateAssetMenu(menuName = "Bootstrap/BootSteps/CheckPrivacyBootStep", fileName = "CheckPrivacyBootStep")]
     public class CheckPrivacyBootStep : BootStep
     {
-        private WindowController _windowController;
+        private WindowsController _windowsController;
 
         [Inject]
-        private void Construct(WindowController windowController)
+        private void Construct(WindowsController windowsController)
         {
-            _windowController = windowController;
+            _windowsController = windowsController;
         }
         
         public override async Task<bool> Execute()
         {
-            await _windowController.Open<PrivacyWindowPresenter, PrivacyWindow>();
+            await _windowsController.Open<PrivacyWindowPresenter, PrivacyWindow>();
 
             return await Task.FromResult(true);
         }

@@ -1,18 +1,17 @@
 using System.Threading.Tasks;
-using Services.AssetManagement.Contracts;
 using UI.View;
 using UnityEngine;
 using Zenject;
 
-public class WindowFactory
+public class WindowsFactory
 {
     private readonly DiContainer _container;
-    private readonly IAssetProvider _assetProvider;
-    
-    public WindowFactory(DiContainer container, IAssetProvider assetProvider)
+    private readonly UiRoot _uiRoot;
+
+    public WindowsFactory(DiContainer container, UiRoot uiRoot)
     {
         _container = container;
-        _assetProvider = assetProvider;
+        _uiRoot = uiRoot;
     }
     
     public async Task<TPresenter> GetWindow<TPresenter, TView>() 
@@ -23,7 +22,7 @@ public class WindowFactory
         
         var prefab = await viewAsset;
         
-        var view = Object.Instantiate(prefab);
+        var view = Object.Instantiate(prefab, _uiRoot.transform);
         presenter.SetView(view);
         
         return presenter;

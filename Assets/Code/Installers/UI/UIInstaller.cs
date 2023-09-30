@@ -1,4 +1,3 @@
-using UnityEngine;
 using Zenject;
 
 namespace Installers.UI
@@ -7,9 +6,8 @@ namespace Installers.UI
     {
         public override void InstallBindings()
         {
-            Container.Bind<WindowFactory>().AsSingle();
-            Container.Bind<WindowController>().AsSingle();
-            Debug.Log("Bind WindowController");
+            Container.Bind<WindowsFactory>().AsSingle();
+            Container.Bind<WindowsController>().AsSingle();
         }
     }
 }

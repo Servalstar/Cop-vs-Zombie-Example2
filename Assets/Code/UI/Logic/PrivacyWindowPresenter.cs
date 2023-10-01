@@ -1,6 +1,5 @@
 using System.Threading.Tasks;
 using UI.View;
-using UnityEngine;
 
 public class PrivacyWindowPresenter : BaseWindowPresenter<PrivacyWindow>
 {
@@ -20,7 +19,6 @@ public class PrivacyWindowPresenter : BaseWindowPresenter<PrivacyWindow>
 
     private void AcceptPrivacy()
     {
-        Debug.Log("Accepted");
         _awaiter.SetResult(true);
         Close();
     }

@@ -6,17 +6,19 @@ namespace Services.SaveLoad
 {
     public class JsonSaver : ISaver
     {
-        public void Save<T>(string filename, T data) where T : class
+        public void Save<T>(T data) where T : class
         {
-            var path = GetFilePath(filename);
+            var path = GetFilePath(typeof(T).Name);
             File.WriteAllText(path, JsonUtility.ToJson(data));
         }
         
-        public T Load<T>(string filename) where T : class
+        public T Load<T>() where T : class, new()
         {
-            var path = GetFilePath(filename);
+            var path = GetFilePath(typeof(T).Name);
 
-            return FileExists(path) ? JsonUtility.FromJson<T>(File.ReadAllText(path)) : default;
+            return FileExists(path) 
+                ? JsonUtility.FromJson<T>(File.ReadAllText(path)) 
+                : new T();
         }
         
         private bool FileExists(string path)

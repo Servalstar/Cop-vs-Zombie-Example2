@@ -1,26 +1,30 @@
 using System.Threading.Tasks;
-using UI.View;
+using UI.Presenters;
+using UI.Views;
 
-public class WindowsController
+namespace UI.Logic
 {
-    private readonly WindowsFactory _windowsFactory;
+    public class WindowsController
+    {
+        private readonly WindowsFactory _windowsFactory;
 
-    public WindowsController(WindowsFactory windowsFactory)
-    {
-        _windowsFactory = windowsFactory;
-    }
+        public WindowsController(WindowsFactory windowsFactory)
+        {
+            _windowsFactory = windowsFactory;
+        }
     
-    public async Task Open<TPresenter, TView>() 
-        where TPresenter : BaseWindowPresenter<TView> where TView : BaseWindow
-    {
-        var window = await _windowsFactory.GetWindow<TPresenter, TView>();
-        window.Open();
-    }
+        public async Task Open<TPresenter, TView>() 
+            where TPresenter : BaseWindowPresenter<TView> where TView : BaseWindow
+        {
+            var window = await _windowsFactory.GetWindow<TPresenter, TView>();
+            window.Open();
+        }
     
-    public async Task Open<TPresenter, TView>(TaskCompletionSource<bool> awaiter) 
-        where TPresenter : BaseWindowPresenter<TView> where TView : BaseWindow
-    {
-        var window = await _windowsFactory.GetWindow<TPresenter, TView>();
-        window.Open(awaiter);
+        public async Task Open<TPresenter, TView>(TaskCompletionSource<bool> awaiter) 
+            where TPresenter : BaseWindowPresenter<TView> where TView : BaseWindow
+        {
+            var window = await _windowsFactory.GetWindow<TPresenter, TView>();
+            window.Open(awaiter);
+        }
     }
 }

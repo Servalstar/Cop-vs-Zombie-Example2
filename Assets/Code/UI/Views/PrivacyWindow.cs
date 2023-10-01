@@ -2,7 +2,7 @@ using System;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace UI.View
+namespace UI.Views
 {
     public class PrivacyWindow : BaseWindowWithData<PrivacyWindow.Data>
     {

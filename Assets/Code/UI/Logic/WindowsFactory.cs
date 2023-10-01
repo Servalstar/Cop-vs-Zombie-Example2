@@ -1,30 +1,34 @@
 using System.Threading.Tasks;
-using UI.View;
+using UI.Presenters;
+using UI.Views;
 using UnityEngine;
 using Zenject;
 
-public class WindowsFactory
+namespace UI.Logic
 {
-    private readonly DiContainer _container;
-    private readonly UiRoot _uiRoot;
+    public class WindowsFactory
+    {
+        private readonly DiContainer _container;
+        private readonly UiRoot _uiRoot;
 
-    public WindowsFactory(DiContainer container, UiRoot uiRoot)
-    {
-        _container = container;
-        _uiRoot = uiRoot;
-    }
+        public WindowsFactory(DiContainer container, UiRoot uiRoot)
+        {
+            _container = container;
+            _uiRoot = uiRoot;
+        }
     
-    public async Task<TPresenter> GetWindow<TPresenter, TView>() 
-        where TPresenter : BaseWindowPresenter<TView> where TView : BaseWindow
-    {
-        var presenter = _container.Resolve<TPresenter>();
-        var viewAsset = _container.Resolve<AsyncInject<TView>>();
+        public async Task<TPresenter> GetWindow<TPresenter, TView>() 
+            where TPresenter : BaseWindowPresenter<TView> where TView : BaseWindow
+        {
+            var presenter = _container.Resolve<TPresenter>();
+            var viewAsset = _container.Resolve<AsyncInject<TView>>();
         
-        var prefab = await viewAsset;
+            var prefab = await viewAsset;
         
-        var view = Object.Instantiate(prefab, _uiRoot.transform);
-        presenter.SetView(view);
+            var view = Object.Instantiate(prefab, _uiRoot.transform);
+            presenter.SetView(view);
         
-        return presenter;
+            return presenter;
+        }
     }
 }

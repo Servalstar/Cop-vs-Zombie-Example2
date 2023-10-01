@@ -1,4 +1,4 @@
-namespace UI.View
+namespace UI.Views
 {
     public abstract class BaseWindowWithData<T> : BaseWindow where T : struct
     {

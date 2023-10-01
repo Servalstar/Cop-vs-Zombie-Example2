@@ -1,3 +1,4 @@
+using UI.Logic;
 using Zenject;
 
 namespace Installers.UI

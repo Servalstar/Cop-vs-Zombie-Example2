@@ -2,7 +2,9 @@ using System.Threading.Tasks;
 using Services.Bootstrap.Contracts;
 using Services.SaveLoad;
 using Services.SaveLoad.Contracts;
-using UI.View;
+using UI.Logic;
+using UI.Presenters;
+using UI.Views;
 using UnityEngine;
 using Zenject;
 

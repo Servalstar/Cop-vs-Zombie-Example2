@@ -13,9 +13,9 @@ namespace Services.AssetManagement
         private readonly Dictionary<string, AsyncOperationHandle> _completedCache = new();
         private readonly Dictionary<string, List<AsyncOperationHandle>> _handles = new();
 
-        public void Initialize()
+        public async Task Initialize()
         {
-            Addressables.InitializeAsync();
+            await Addressables.InitializeAsync().Task;
         }
 
         public async Task<T> Load<T>(string address) where T : class

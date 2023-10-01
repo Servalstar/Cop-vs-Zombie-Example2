@@ -19,9 +19,9 @@ namespace Services.Bootstrap.BootSteps
 
         public override async Task<bool> Execute()
         {
-            _assetProvider.Initialize();
+            await _assetProvider.Initialize();
             
-            return await Task.FromResult(true);
+            return true;
         }
     }
 }

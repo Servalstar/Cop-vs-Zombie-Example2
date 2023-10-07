@@ -4,7 +4,7 @@ using UI.Windows.Presenters;
 using UnityEngine;
 using Zenject;
 
-namespace UI.Logic
+namespace UI.Windows.Logic
 {
     public class WindowsFactory
     {

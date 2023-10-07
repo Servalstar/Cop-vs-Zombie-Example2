@@ -1,10 +1,8 @@
 using Services.SaveLoad;
 using Services.SaveLoad.Contracts;
-using UI.MainMenu;
-using UI.Views;
 using UnityEngine.SceneManagement;
 
-namespace UI.Presenters
+namespace UI.MainMenu
 {
     public class MainMenuPresenter
     {

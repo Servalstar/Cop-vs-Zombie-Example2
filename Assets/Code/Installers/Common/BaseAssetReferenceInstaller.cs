@@ -4,9 +4,9 @@ using UnityEngine;
 using UnityEngine.AddressableAssets;
 using Zenject;
 
-namespace Installers.UI
+namespace Installers.Common
 {
-    public class UIBaseInstaller : MonoInstaller
+    public class BaseAssetReferenceInstaller : MonoInstaller
     {
         private IAssetProvider _assetProvider;
 

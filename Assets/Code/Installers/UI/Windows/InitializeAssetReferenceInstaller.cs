@@ -1,3 +1,4 @@
+using Installers.Common;
 using UI;
 using UI.Presenters;
 using UI.Views;
@@ -7,7 +8,7 @@ using Zenject;
 
 namespace Installers.UI
 {
-    public class InitializeUIInstaller : UIBaseInstaller
+    public class InitializeAssetReferenceInstaller : BaseAssetReferenceInstaller
     {
         [SerializeField] private AssetReference _privacyPrefab;
         [SerializeField] private UiRoot _uiRoot;

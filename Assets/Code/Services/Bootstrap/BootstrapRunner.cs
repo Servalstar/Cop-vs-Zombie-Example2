@@ -14,14 +14,11 @@ namespace Services.Bootstrap
         {
             _bootStepsContainer = bootStepsContainer;
             _bootstrapService = bootstrapService;
-        }
+        } 
         
         private void Awake()
         {
-            if (!_bootstrapService.IsExecuted)
-            {
-                _bootstrapService.Execute(_bootStepsContainer);
-            }
+            _bootstrapService.Execute(_bootStepsContainer);
         }
     }
 }

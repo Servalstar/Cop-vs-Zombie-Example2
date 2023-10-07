@@ -1,6 +1,8 @@
+using UI.Windows.Views;
+
 namespace UI.Views
 {
-    public abstract class BaseWindowWithData<T> : BaseWindow where T : struct
+    public abstract class BaseViewWithData<T> : BaseView where T : struct
     {
         public void Open(T data)
         {

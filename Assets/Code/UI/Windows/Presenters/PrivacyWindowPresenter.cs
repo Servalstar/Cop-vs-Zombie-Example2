@@ -1,23 +1,14 @@
 using System.Threading.Tasks;
 using UI.Views;
-using UI.Windows.Presenters;
 
-namespace UI.Presenters
+namespace UI.Windows.Presenters
 {
-    public class PrivacyWindowPresenter : BaseWindowPresenter<PrivacyWindow>
+    public class PrivacyWindowPresenter : BaseWindowPresenter<PrivacyView>
     {
-        private PrivacyWindow _view;
-
-        public override void SetView(PrivacyWindow view)
-        {
-            _view = view;
-            base.SetView(view);
-        }
-
         public override void Open(TaskCompletionSource<bool> awaiter)
         {
             _awaiter = awaiter;
-            _view.Open(new PrivacyWindow.Data(AcceptPrivacy));
+            _view.Open(new PrivacyView.Data(AcceptPrivacy));
         }
 
         private void AcceptPrivacy()

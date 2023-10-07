@@ -9,8 +9,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7c5e8f626cb6463b9b7dbe2c96608ef6, type: 3}
-  m_Name: LimitedBootStepsContainer
+  m_Script: {fileID: 11500000, guid: ef692964386643b184f7bc73efba93ad, type: 3}
+  m_Name: CreateMenuBootStep
   m_EditorClassIdentifier: 
-  _bootSteps:
-  - {fileID: 11400000, guid: 8ab2100461b67444b9f3801f47785650, type: 2}

@@ -1,6 +1,6 @@
 using Installers.Common;
-using UI.Presenters;
 using UI.Views;
+using UI.Windows.Presenters;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
 using Zenject;
@@ -13,7 +13,7 @@ namespace Installers.UI.Windows
 
         public override void InstallBindings()
         {
-            Container.BindAsync<PrivacyWindow>().FromMethod(_ => LoadAsset<PrivacyWindow>(_privacyPrefab)).AsSingle();
+            Container.BindAsync<PrivacyView>().FromMethod(_ => LoadAsset<PrivacyView>(_privacyPrefab)).AsSingle();
             Container.Bind<PrivacyWindowPresenter>().AsSingle();
         }
     }

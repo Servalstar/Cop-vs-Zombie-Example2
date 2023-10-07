@@ -403,6 +403,7 @@ GameObject:
   - component: {fileID: 5292683753236889852}
   - component: {fileID: 6058412388716685799}
   - component: {fileID: 3384200555485351995}
+  - component: {fileID: 4054744208434698626}
   m_Layer: 5
   m_Name: MainMenuScreen
   m_TagString: Untagged
@@ -471,6 +472,20 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &4054744208434698626
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7046771531960804623}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: baafeef4b4045844d8cd75a7e3045193, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _score: {fileID: 7505108865961899079}
+  _startGameButton: {fileID: 9055063348885380262}
 --- !u!1001 &137340266956494352
 PrefabInstance:
   m_ObjectHideFlags: 0

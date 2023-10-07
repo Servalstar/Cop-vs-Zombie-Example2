@@ -1,6 +1,7 @@
 using System.Threading.Tasks;
 using UI.Views;
 using UI.Windows.Presenters;
+using UI.Windows.Views;
 using UnityEngine;
 using Zenject;
 
@@ -18,7 +19,7 @@ namespace UI.Windows.Logic
         }
     
         public async Task<TPresenter> GetWindow<TPresenter, TView>() 
-            where TPresenter : BaseWindowPresenter<TView> where TView : BaseWindow
+            where TPresenter : BaseWindowPresenter<TView> where TView : BaseView
         {
             var presenter = _container.Resolve<TPresenter>();
             var viewAsset = _container.Resolve<AsyncInject<TView>>();

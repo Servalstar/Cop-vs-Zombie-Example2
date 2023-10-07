@@ -1,12 +1,11 @@
 using System.Threading.Tasks;
-using UI.Views;
+using UI.Windows.Views;
 
 namespace UI.Windows.Presenters
 {
-    public abstract class BaseWindowPresenter<T> where T : BaseWindow
+    public abstract class BaseWindowPresenter<T> where T : BaseView
     {
-        private T _view;
-
+        protected T _view;
         protected TaskCompletionSource<bool> _awaiter;
 
         public virtual void SetView(T view)

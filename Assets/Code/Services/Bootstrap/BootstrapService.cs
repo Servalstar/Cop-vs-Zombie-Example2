@@ -1,18 +1,28 @@
 using System;
-using Services.Bootstrap.BootSteps;
+using System.Threading.Tasks;
 using Services.Bootstrap.Contracts;
 
 namespace Services.Bootstrap
 {
     public class BootstrapService : IBootstrapService
     {
-        public bool IsExecuted { get; private set; }
+        public bool IsInitialized { get; private set; }
         
         public async void Execute(BootStepsContainer bootStepsContainer)
         {
-            IsExecuted = true;
+            if (!IsInitialized)
+            {
+                await ExecuteBootSteps(bootStepsContainer.InitBootSteps);
+                
+                IsInitialized = true;
+            }
             
-            foreach (var bootStep in bootStepsContainer.BootSteps)
+            await ExecuteBootSteps(bootStepsContainer.SceneBootSteps);
+        }
+
+        private static async Task ExecuteBootSteps(BootStep[] bootSteps)
+        {
+            foreach (var bootStep in bootSteps)
             {
                 var isSuccessful = await bootStep.Execute();
 

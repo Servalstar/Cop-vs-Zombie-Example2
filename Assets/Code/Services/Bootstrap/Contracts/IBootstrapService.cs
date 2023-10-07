@@ -5,6 +5,6 @@ namespace Services.Bootstrap.Contracts
     public interface IBootstrapService
     {
         void Execute(BootStepsContainer bootStepsContainer);
-        bool IsExecuted { get; }
+        bool IsInitialized { get; }
     }
 }

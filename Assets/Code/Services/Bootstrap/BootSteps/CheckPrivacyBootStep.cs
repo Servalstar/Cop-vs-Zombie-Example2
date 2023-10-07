@@ -2,9 +2,9 @@ using System.Threading.Tasks;
 using Services.Bootstrap.Contracts;
 using Services.SaveLoad;
 using Services.SaveLoad.Contracts;
-using UI.Presenters;
 using UI.Views;
 using UI.Windows.Logic;
+using UI.Windows.Presenters;
 using UnityEngine;
 using Zenject;
 
@@ -33,7 +33,7 @@ namespace Services.Bootstrap.BootSteps
             }
             
             var awaiter = new TaskCompletionSource<bool>();
-            await _windowsController.Open<PrivacyWindowPresenter, PrivacyWindow>(awaiter);
+            await _windowsController.Open<PrivacyWindowPresenter, PrivacyView>(awaiter);
             var result = await awaiter.Task;
 
             privacyState.IsAccepted = result;

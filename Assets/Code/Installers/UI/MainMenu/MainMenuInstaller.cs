@@ -13,6 +13,7 @@ namespace Installers.UI.MainMenu
         public override void InstallBindings()
         {
             Container.BindAsync<MainMenuUI>().FromMethod(_ => LoadAsset<MainMenuUI>(_mainMenuPrefab)).AsSingle();
+            Container.Bind<MainMenuPresenter>().AsSingle();
         }
     }
 }

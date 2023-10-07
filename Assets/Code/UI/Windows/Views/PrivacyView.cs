@@ -4,7 +4,7 @@ using UnityEngine.UI;
 
 namespace UI.Views
 {
-    public class PrivacyWindow : BaseWindowWithData<PrivacyWindow.Data>
+    public class PrivacyView : BaseViewWithData<PrivacyView.Data>
     {
         [SerializeField] private Button _acceptButton;
 

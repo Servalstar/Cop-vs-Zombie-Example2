@@ -1,5 +1,4 @@
 using Services.Bootstrap;
-using Services.Bootstrap.Contracts;
 using UnityEngine;
 using Zenject;
 
@@ -8,18 +7,17 @@ namespace Installers.Services
     public class BootstrapRunnerInstaller : MonoInstaller
     {
         [SerializeField] private BootStepsContainer _bootStepsContainer;
-        [Inject] private IBootstrapService _bootstrapService;
-        
+
         public override void InstallBindings()
         {
             Container.Bind<BootStepsContainer>().FromInstance(_bootStepsContainer).AsSingle();
 
-            if (_bootstrapService.IsExecuted)
+            foreach (var bootStep in _bootStepsContainer.InitBootSteps)
             {
-                return;
+                Container.QueueForInject(bootStep);
             }
             
-            foreach (var bootStep in _bootStepsContainer.BootSteps)
+            foreach (var bootStep in _bootStepsContainer.SceneBootSteps)
             {
                 Container.QueueForInject(bootStep);
             }

@@ -6,8 +6,10 @@ namespace Services.Bootstrap
     [CreateAssetMenu(menuName = "Bootstrap/BootStepsContainer", fileName = "BootStepsContainer")]
     public class BootStepsContainer : ScriptableObject
     {
-        [SerializeField] private BootStep[] _bootSteps;
+        [SerializeField] private BootStep[] _initBootSteps;
+        [SerializeField] private BootStep[] _sceneBootSteps;
         
-        public BootStep[] BootSteps => _bootSteps;
+        public BootStep[] InitBootSteps => _initBootSteps;
+        public BootStep[] SceneBootSteps => _sceneBootSteps;
     }
 }

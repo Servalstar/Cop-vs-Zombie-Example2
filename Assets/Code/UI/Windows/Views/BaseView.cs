@@ -1,8 +1,8 @@
 using UnityEngine;
 
-namespace UI.Views
+namespace UI.Windows.Views
 {
-    public abstract class BaseWindow : MonoBehaviour
+    public abstract class BaseView : MonoBehaviour
     {
         public void Open()
         {

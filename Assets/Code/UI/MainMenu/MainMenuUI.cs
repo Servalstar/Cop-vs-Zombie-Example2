@@ -1,11 +1,12 @@
 using System;
 using TMPro;
+using UI.Windows.Views;
 using UnityEngine;
 using UnityEngine.UI;
 
 namespace UI.MainMenu
 {
-    public class MainMenuUI : MonoBehaviour
+    public class MainMenuUI : BaseView
     {
         [SerializeField] private TextMeshProUGUI _score;
         [SerializeField] private Button _startGameButton;

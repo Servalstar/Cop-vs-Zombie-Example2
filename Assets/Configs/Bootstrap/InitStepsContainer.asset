@@ -10,9 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7c5e8f626cb6463b9b7dbe2c96608ef6, type: 3}
-  m_Name: FullBootStepsContainer
+  m_Name: InitStepsContainer
   m_EditorClassIdentifier: 
-  _bootSteps:
+  _initBootSteps:
   - {fileID: 11400000, guid: 8ab2100461b67444b9f3801f47785650, type: 2}
+  _sceneBootSteps:
   - {fileID: 11400000, guid: b6a77b44e24cfec448c6234210fccfc0, type: 2}
   - {fileID: 11400000, guid: 23556ef728a23a749b0482b2d4382ce2, type: 2}

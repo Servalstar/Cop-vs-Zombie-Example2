@@ -1,8 +1,9 @@
 using System.Threading.Tasks;
-using UI.Presenters;
+using UI.Logic;
 using UI.Views;
+using UI.Windows.Presenters;
 
-namespace UI.Logic
+namespace UI.Windows.Logic
 {
     public class WindowsController
     {

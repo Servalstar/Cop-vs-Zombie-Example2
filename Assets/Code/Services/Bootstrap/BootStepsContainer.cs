@@ -1,7 +1,7 @@
 using Services.Bootstrap.Contracts;
 using UnityEngine;
 
-namespace Services.Bootstrap.BootSteps
+namespace Services.Bootstrap
 {
     [CreateAssetMenu(menuName = "Bootstrap/BootStepsContainer", fileName = "BootStepsContainer")]
     public class BootStepsContainer : ScriptableObject

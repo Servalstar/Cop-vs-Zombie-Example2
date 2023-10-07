@@ -1,7 +1,7 @@
 using System.Threading.Tasks;
 using UI.Views;
 
-namespace UI.Presenters
+namespace UI.Windows.Presenters
 {
     public abstract class BaseWindowPresenter<T> where T : BaseWindow
     {

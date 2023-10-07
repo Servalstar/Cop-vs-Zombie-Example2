@@ -8,7 +8,7 @@ namespace Installers.Services
         public override void InstallBindings()
         {
             Container.BindInterfacesTo<JsonSaver>().AsSingle();
-            Container.BindInterfacesTo<PlayerProgress>().AsSingle();
+            Container.Bind<PlayerProgress>().AsSingle();
         }
     }
 }

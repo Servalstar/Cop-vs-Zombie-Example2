@@ -418,7 +418,6 @@ MonoBehaviour:
     m_SubObjectName: 
     m_SubObjectType: 
     m_EditorAssetChanged: 0
-  _uiRoot: {fileID: 4541566306197712682, guid: 5de5491930c960e469e78bda90a39b03, type: 3}
 --- !u!114 &1473881033
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -431,3 +430,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7f12557ce3ae4d69a9c75a65535f4358, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _uiRoot: {fileID: 4541566306197712682, guid: 5de5491930c960e469e78bda90a39b03, type: 3}

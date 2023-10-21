@@ -50,7 +50,7 @@ ParticleSystem:
   emitterVelocityMode: 0
   looping: 0
   prewarm: 0
-  playOnAwake: 1
+  playOnAwake: 0
   useUnscaledTime: 0
   autoRandomSeed: 1
   startDelay:
@@ -5013,6 +5013,7 @@ GameObject:
   - component: {fileID: 5999261672193775548}
   - component: {fileID: 754027387564814371}
   - component: {fileID: 1726626393722402504}
+  - component: {fileID: 1473616314472641482}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -5115,6 +5116,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _characterController: {fileID: 5999261672193775548}
   _movementSpeed: 4
+--- !u!114 &1473616314472641482
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8619338778009079851}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: da393b7182cce1e478b4515e5e6f556f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _animator: {fileID: 8619338777999598093}
+  _mover: {fileID: 1726626393722402504}
 --- !u!1 &8619338778009079855
 GameObject:
   m_ObjectHideFlags: 0

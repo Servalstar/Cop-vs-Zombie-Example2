@@ -26,7 +26,7 @@ namespace Core
 
         private void Update()
         {
-            Vector3 movementVector = Vector3.zero;
+            var movementVector = Vector3.zero;
 
             if (CanMove())
             {

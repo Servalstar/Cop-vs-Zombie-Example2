@@ -30,7 +30,7 @@ namespace Core
             var asset = _container.Resolve<AsyncInject<Player>>();
             var prefab = await asset;
             
-            var player = Object.Instantiate(prefab);
+            var player = _container.InstantiatePrefab(prefab);
             player.transform.position = _spawnPoints.PlayerSpawnPoint;
             
             _cameraMover.SetTarget(player.gameObject);

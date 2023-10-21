@@ -37,6 +37,10 @@ MonoBehaviour:
     m_Address: Assets/Prefabs/UI/HUD/Hud.prefab
     m_ReadOnly: 0
     m_SerializedLabels: []
+  - m_GUID: 7b9ad3e128572c54e8175ed20fd97823
+    m_Address: Assets/Prefabs/Hero.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: 11663d3a1ec329d4d85762ad55692f7f, type: 2}
   m_SchemaSet:

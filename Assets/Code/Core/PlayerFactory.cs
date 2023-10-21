@@ -13,14 +13,16 @@ namespace Core
         
         private readonly DiContainer _container;
         private readonly SpawnPoints _spawnPoints;
+        private readonly CameraMover _cameraMover;
         private readonly Transform _uiRootTransform;
 
         private Transform _hudRootTransform;
 
-        protected PlayerFactory(DiContainer container, SpawnPoints spawnPoints)
+        protected PlayerFactory(DiContainer container, SpawnPoints spawnPoints, CameraMover cameraMover)
         {
             _container = container;
             _spawnPoints = spawnPoints;
+            _cameraMover = cameraMover;
         }
 
         public async Task Create() 
@@ -30,6 +32,10 @@ namespace Core
             
             var player = Object.Instantiate(prefab);
             player.transform.position = _spawnPoints.PlayerSpawnPoint;
+            
+            _cameraMover.SetTarget(player.gameObject);
+            
+            player.gameObject.SetActive(true);
         }
     }
 }

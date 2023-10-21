@@ -29,6 +29,14 @@ MonoBehaviour:
     m_Address: Assets/Prefabs/Environment/Environment.prefab
     m_ReadOnly: 0
     m_SerializedLabels: []
+  - m_GUID: b6fc94212f5934343bd7a1e8580c51b6
+    m_Address: Assets/Prefabs/UI/HUD/JoyArea.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 2c8352ebd2903c347b057fd5b8b20c4a
+    m_Address: Assets/Prefabs/UI/HUD/Hud.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: 11663d3a1ec329d4d85762ad55692f7f, type: 2}
   m_SchemaSet:

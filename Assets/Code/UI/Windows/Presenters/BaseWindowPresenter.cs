@@ -1,14 +1,15 @@
 using System.Threading.Tasks;
+using UI.Windows.Contracts;
 using UI.Windows.Views;
 
 namespace UI.Windows.Presenters
 {
-    public abstract class BaseWindowPresenter<T> where T : BaseView
+    public abstract class BaseWindowPresenter<T> : IWindowPresenter<T> where T : BaseView
     {
         protected T _view;
         protected TaskCompletionSource<bool> _awaiter;
 
-        public virtual void SetView(T view)
+        public void SetView(T view)
         {
             _view = view;
         }

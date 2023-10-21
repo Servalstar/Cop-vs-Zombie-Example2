@@ -1,4 +1,3 @@
-using UI;
 using UI.Common;
 using UI.Windows.Logic;
 using UnityEngine;
@@ -13,7 +12,6 @@ namespace Installers.UI.Windows
         public override void InstallBindings()
         {
             Container.Bind<WindowsFactory>().AsSingle();
-            Container.Bind<WindowsController>().AsSingle();
             Container.Bind<UiRoot>().FromComponentInNewPrefab(_uiRoot).AsSingle();
         }
     }

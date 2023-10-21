@@ -4,7 +4,6 @@ using Services.SaveLoad;
 using Services.SaveLoad.Contracts;
 using UI.Views;
 using UI.Windows.Logic;
-using UI.Windows.Presenters;
 using UnityEngine;
 using Zenject;
 
@@ -13,14 +12,14 @@ namespace Services.Bootstrap.BootSteps
     [CreateAssetMenu(menuName = "Bootstrap/BootSteps/CheckPrivacyBootStep", fileName = "CheckPrivacyBootStep")]
     public class CheckPrivacyBootStep : BootStep
     {
-        private WindowsController _windowsController;
+        private WindowsFactory _windowsFactory;
         private ISaver _saver;
 
         [Inject]
-        private void Construct(ISaver saver, WindowsController windowsController)
+        private void Construct(ISaver saver, WindowsFactory windowsFactory)
         {
             _saver = saver;
-            _windowsController = windowsController;
+            _windowsFactory = windowsFactory;
         }
         
         public override async Task<bool> Execute()
@@ -33,7 +32,7 @@ namespace Services.Bootstrap.BootSteps
             }
             
             var awaiter = new TaskCompletionSource<bool>();
-            await _windowsController.Open<PrivacyWindowPresenter, PrivacyView>(awaiter);
+            await _windowsFactory.OpenWindow<PrivacyView>(awaiter);
             var result = await awaiter.Task;
 
             privacyState.IsAccepted = result;

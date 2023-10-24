@@ -1,4 +1,5 @@
 using Core;
+using Core.Factories;
 using Installers.Common;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
@@ -13,9 +14,12 @@ namespace Installers.Core
         public override void InstallBindings()
         {
             Container.BindAsync<EnemyComponents>().FromMethod(_ => LoadFromPrefab<EnemyComponents>(_enemy));
-            //Container.Bind<PlayerFactory>().AsSingle();
             
-            //Container.BindInterfacesAndSelfTo<PlayerBehaviour>().AsSingle();
+            Container.Bind<ObjectPool<EnemyBehaviour>>().AsSingle();
+            Container.BindInterfacesTo<EnemyFactory>().AsSingle();
+            Container.Bind<EnemySpawner>().AsSingle();
+            
+            Container.BindInterfacesAndSelfTo<EnemyBehaviour>().AsSingle();
         }
     }
 }

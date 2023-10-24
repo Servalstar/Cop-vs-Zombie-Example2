@@ -17,3 +17,4 @@ MonoBehaviour:
   _sceneBootSteps:
   - {fileID: 11400000, guid: b3d3025a6392109438019dfb2d0bf3af, type: 2}
   - {fileID: 11400000, guid: 9b6fc19eacd0a564a8d7bc64f3317a92, type: 2}
+  - {fileID: 11400000, guid: 52eac75f2bfdc3d41842184655ffe93e, type: 2}

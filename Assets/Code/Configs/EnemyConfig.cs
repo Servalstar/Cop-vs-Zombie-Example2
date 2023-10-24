@@ -8,9 +8,10 @@ namespace Configs
         [SerializeField] private float _movementSpeed;
         [SerializeField] private float _stopDistance;
         [SerializeField] private float _maxHealth;
+        [SerializeField] private float _spawnCooldown;
         [Header("Attack data")]
         [SerializeField] private float _damage;
-        [SerializeField] private float _cooldown;
+        [SerializeField] private float _attackCooldown;
         [SerializeField] private float _attackRadius;
 
 
@@ -21,8 +22,9 @@ namespace Configs
 
         public float Damage => _damage;
 
-        public float Cooldown => _cooldown;
+        public float AttackCooldown => _attackCooldown;
 
         public float AttackRadius => _attackRadius;
+        public float SpawnCooldown => _spawnCooldown;
     }
 }

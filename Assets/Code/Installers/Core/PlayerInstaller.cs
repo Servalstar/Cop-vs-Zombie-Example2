@@ -15,7 +15,7 @@ namespace Installers.Core
         public override void InstallBindings()
         {
             Container.BindAsync<PlayerComponents>().FromMethod(_ => LoadFromPrefab<PlayerComponents>(_player));
-            Container.Bind<PlayerFactory>().AsSingle();
+            Container.BindInterfacesTo<PlayerFactory>().AsSingle();
             
             Container.Bind<PlayerModel>().AsSingle();
             Container.BindInterfacesAndSelfTo<PlayerBehaviour>().AsSingle();

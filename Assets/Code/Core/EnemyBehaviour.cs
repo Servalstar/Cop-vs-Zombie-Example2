@@ -6,18 +6,18 @@ using Zenject;
 
 namespace Core
 {
-    public class PlayerBehaviour : ITickable, IBehaviour
+    public class EnemyBehaviour : ITickable, IBehaviour
     {
         private readonly CharacterModel _characterModel;
         private readonly CharacterMover _characterMover;
         private readonly CharacterAnimator _characterAnimator;
         private readonly IInputService _inputService;
         private CurrentState _currentState;
-        private PlayerComponents _playerComponents;
+        private EnemyComponents _enemyComponents;
         
         private bool CanMove => _characterModel.IsAlive();
 
-        public PlayerBehaviour(
+        public EnemyBehaviour(
             CharacterModel characterModel, 
             CharacterMover characterMover, 
             CharacterAnimator characterAnimator, 
@@ -29,20 +29,20 @@ namespace Core
             _inputService = inputService;
         }
 
-        public void Init(PlayerComponents playerComponents, PlayerConfig playerConfig)
+        public void Init(EnemyComponents enemyComponents, EnemyConfig enemyConfig)
         {
-            _playerComponents = playerComponents;
-            _characterMover.Init(playerComponents.transform, playerComponents.CharacterController, playerConfig.MovementSpeed);
-            _characterAnimator.Init(playerComponents.Animator);
+            _enemyComponents = enemyComponents;
+            //_characterMover.Init(enemyComponents.transform, enemyComponents.CharacterController, playerConfig.MovementSpeed);
+            _characterAnimator.Init(enemyComponents.Animator);
         }
         
         public void Tick()
         {
             if (_currentState == CurrentState.Active)
             {
-                _characterMover.Move(_inputService.Direction);
-                _characterModel.CurrentSpeed = _playerComponents.CharacterController.velocity.magnitude;
-                _characterAnimator.SetSpeed(_characterModel.CurrentSpeed);
+                //_characterMover.Move(_inputService.Direction);
+                //_characterModel.CurrentSpeed = _playerComponents.CharacterController.velocity.magnitude;
+                //_characterAnimator.SetSpeed(_characterModel.CurrentSpeed);
             }
         }
 

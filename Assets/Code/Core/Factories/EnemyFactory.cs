@@ -1,11 +1,12 @@
 using System.Threading.Tasks;
 using Configs;
+using Core.CommonForCharacters.Contracts;
 using UnityEngine;
 using Zenject;
 
 namespace Core.Factories
 {
-    public class EnemyFactory
+    public class EnemyFactory : ICharacterFactory<EnemyBehaviour>
     {
         private readonly DiContainer _container;
         private readonly SpawnPoints _spawnPoints;
@@ -21,24 +22,24 @@ namespace Core.Factories
             _cameraMover = cameraMover;
         }
 
-        public async Task Create() 
+        public async Task<EnemyBehaviour> Create() 
         {
-            var prefabAsset = _container.Resolve<AsyncInject<PlayerComponents>>();
+            var prefabAsset = _container.Resolve<AsyncInject<EnemyComponents>>();
             var prefab = await prefabAsset;
             
-            var playerComponents = _container.InstantiatePrefabForComponent<PlayerComponents>(prefab);
-            playerComponents.transform.position = _spawnPoints.PlayerSpawnPoint;
+            var enemyComponents = _container.InstantiatePrefabForComponent<EnemyComponents>(prefab);
+            enemyComponents.transform.position = _spawnPoints.EnemiesSpawnPoint;
             
-            _cameraMover.SetTarget(playerComponents.gameObject);
+            enemyComponents.gameObject.SetActive(true);
             
-            playerComponents.gameObject.SetActive(true);
-            
-            var configAsset = _container.Resolve<AsyncInject<PlayerConfig>>();
+            var configAsset = _container.Resolve<AsyncInject<EnemyConfig>>();
             var config = await configAsset;
 
-            var playerBehaviour = _container.Resolve<PlayerBehaviour>();
-            playerBehaviour.Init(playerComponents, config);
-            playerBehaviour.Activate();
+            var enemyBehaviour = _container.Resolve<EnemyBehaviour>();
+            enemyBehaviour.Init(enemyComponents, config);
+            enemyBehaviour.Activate();
+
+            return enemyBehaviour;
         }
     }
 }

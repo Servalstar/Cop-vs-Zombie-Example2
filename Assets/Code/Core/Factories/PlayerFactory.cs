@@ -1,11 +1,12 @@
 using System.Threading.Tasks;
 using Configs;
+using Core.CommonForCharacters.Contracts;
 using UnityEngine;
 using Zenject;
 
 namespace Core.Factories
 {
-    public class PlayerFactory
+    public class PlayerFactory : ICharacterFactory<PlayerBehaviour>
     {
         private readonly DiContainer _container;
         private readonly SpawnPoints _spawnPoints;
@@ -21,7 +22,7 @@ namespace Core.Factories
             _cameraMover = cameraMover;
         }
 
-        public async Task Create() 
+        public async Task<PlayerBehaviour> Create() 
         {
             var prefabAsset = _container.Resolve<AsyncInject<PlayerComponents>>();
             var prefab = await prefabAsset;
@@ -39,6 +40,8 @@ namespace Core.Factories
             var playerBehaviour = _container.Resolve<PlayerBehaviour>();
             playerBehaviour.Init(playerComponents, config);
             playerBehaviour.Activate();
+
+            return playerBehaviour;
         }
     }
 }

@@ -1,5 +1,5 @@
 using System.Threading.Tasks;
-using Core;
+using Core.Factories;
 using Services.Bootstrap.Contracts;
 using UnityEngine;
 using Zenject;
@@ -20,7 +20,6 @@ namespace Services.Bootstrap.BootSteps
         public override async Task<bool> Execute()
         {
             await _playerFactory.Create();
-            //await _hudFactory.CreateInput();
 
             return true;
         }

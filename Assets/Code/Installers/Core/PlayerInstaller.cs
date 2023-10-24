@@ -1,4 +1,5 @@
 using Core;
+using Core.Factories;
 using Installers.Common;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
@@ -6,15 +7,19 @@ using Zenject;
 
 namespace Installers.Core
 {
-    public class CoreInstaller : BaseAssetReferenceInstaller
+    public class PlayerInstaller : BaseAssetReferenceInstaller
     {
         [SerializeField] private AssetReference _player;
         [SerializeField] private CameraMover _cameraMover;
 
         public override void InstallBindings()
         {
-            Container.BindAsync<Player>().FromMethod(_ => LoadAsset<Player>(_player));
+            Container.BindAsync<PlayerComponents>().FromMethod(_ => LoadFromPrefab<PlayerComponents>(_player));
             Container.Bind<PlayerFactory>().AsSingle();
+            
+            Container.Bind<PlayerModel>().AsSingle();
+            Container.BindInterfacesAndSelfTo<PlayerBehaviour>().AsSingle();
+
             Container.Bind<CameraMover>().FromInstance(_cameraMover).AsSingle();
         }
     }

@@ -13,7 +13,7 @@ namespace Installers.UI.Windows
 
         public override void InstallBindings()
         {
-            Container.BindAsync<PrivacyView>().FromMethod(_ => LoadAsset<PrivacyView>(_privacyPrefab));
+            Container.BindAsync<PrivacyView>().FromMethod(_ => LoadFromPrefab<PrivacyView>(_privacyPrefab));
             Container.BindInterfacesTo<PrivacyWindowPresenter>().AsSingle();
         }
     }

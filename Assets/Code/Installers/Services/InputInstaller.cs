@@ -18,7 +18,7 @@ namespace Installers.Services
             Container.BindInterfacesTo<MobileInputService>().AsSingle();
 #endif
             
-            Container.BindAsync<Joystick>().FromMethod(_ => LoadAsset<Joystick>(_joystick));
+            Container.BindAsync<Joystick>().FromMethod(_ => LoadFromPrefab<Joystick>(_joystick));
         }
     }
 }

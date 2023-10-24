@@ -13,7 +13,7 @@ namespace Installers.UI.Core
 
         public override void InstallBindings()
         {
-            Container.BindAsync<Hud>().FromMethod(_ => LoadAsset<Hud>(_hud));
+            Container.BindAsync<Hud>().FromMethod(_ => LoadFromPrefab<Hud>(_hud));
             Container.Bind<HudFactory>().AsSingle();
         }
     }

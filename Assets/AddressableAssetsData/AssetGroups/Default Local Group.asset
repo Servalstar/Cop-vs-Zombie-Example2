@@ -41,6 +41,18 @@ MonoBehaviour:
     m_Address: Assets/Prefabs/Hero.prefab
     m_ReadOnly: 0
     m_SerializedLabels: []
+  - m_GUID: 0906683c244344e4895d5e015b51e163
+    m_Address: Assets/Configs/Core/PlayerConfig.asset
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: b14953694d54eea4eb66f453e525024c
+    m_Address: Assets/Prefabs/Enemy.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: fc83bb9f38aaf964c80d6bc714e1e051
+    m_Address: Assets/Configs/Core/EnemyConfig.asset
+    m_ReadOnly: 0
+    m_SerializedLabels: []
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: 11663d3a1ec329d4d85762ad55692f7f, type: 2}
   m_SchemaSet:

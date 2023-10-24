@@ -1,7 +1,8 @@
+using Core;
 using UnityEngine;
 using Zenject;
 
-namespace Core
+namespace Installers.Core
 {
     public class SpawnPointsInstaller : MonoInstaller
     {

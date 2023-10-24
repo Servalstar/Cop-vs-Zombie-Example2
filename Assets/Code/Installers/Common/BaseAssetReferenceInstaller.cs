@@ -16,11 +16,16 @@ namespace Installers.Common
             _assetProvider = assetProvider;
         }
 
-        protected async Task<T> LoadAsset<T> (AssetReference assetReference) where T : Component
+        protected async Task<T> LoadFromPrefab<T> (AssetReference assetReference)
         {
             var prefab = await _assetProvider.Load<GameObject>(assetReference);
             
             return prefab.GetComponent<T>();
+        }
+        
+        protected async Task<T> LoadComponent<T> (AssetReference assetReference) where T : class
+        {
+            return await _assetProvider.Load<T>(assetReference);
         }
     }
 }

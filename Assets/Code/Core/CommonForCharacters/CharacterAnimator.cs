@@ -1,19 +1,23 @@
 using UnityEngine;
 
-namespace Core
+namespace Core.CommonForCharacters
 {
-    public class CharacterAnimator : MonoBehaviour
+    public class CharacterAnimator
     {
-        [SerializeField] private Animator _animator;
-        [SerializeField] private Mover _mover;
-        
         private readonly int _speed = Animator.StringToHash("Speed");
         private readonly int _attack = Animator.StringToHash("Attack");
         private readonly int _death = Animator.StringToHash("Death");
+        
+        private Animator _animator;
 
-        private void Update()
+        public void Init(Animator animator)
         {
-            _animator.SetFloat(_speed, _mover.CurrentSpeed);
+            _animator = animator;
+        }
+        
+        public void SetSpeed(float speed)
+        {
+            _animator.SetFloat(_speed, speed);
         }
 
         public void PlayAttack()

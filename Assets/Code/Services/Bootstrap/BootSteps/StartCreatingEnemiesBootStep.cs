@@ -20,9 +20,7 @@ namespace Services.Bootstrap.BootSteps
         
         public override async Task<bool> Execute()
         {
-            var source = new CancellationTokenSource();
-            
-            await _spawner.Run(source);
+            await _spawner.Run();
 
             return true;
         }

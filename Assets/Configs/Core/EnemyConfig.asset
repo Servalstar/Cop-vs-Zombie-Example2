@@ -15,6 +15,7 @@ MonoBehaviour:
   _movementSpeed: 2
   _stopDistance: 1.4
   _maxHealth: 50
+  _spawnCooldown: 3
   _damage: 5
-  _cooldown: 0
+  _attackCooldown: 0
   _attackRadius: 2

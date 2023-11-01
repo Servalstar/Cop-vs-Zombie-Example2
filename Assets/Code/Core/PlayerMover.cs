@@ -1,8 +1,8 @@
 using UnityEngine;
 
-namespace Core.CommonForCharacters
+namespace Core
 {
-    public class CharacterMover
+    public class PlayerMover
     {
         private CharacterController _characterController;
         private Camera _camera;

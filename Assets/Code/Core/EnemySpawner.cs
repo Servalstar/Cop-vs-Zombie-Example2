@@ -50,7 +50,7 @@ namespace Core
                 {
                     await Task.Delay(TimeSpan.FromSeconds(_config.SpawnCooldown), token);
                 }
-                catch (TaskCanceledException e)
+                catch (TaskCanceledException)
                 {
                     return;
                 }

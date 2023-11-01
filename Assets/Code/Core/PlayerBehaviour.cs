@@ -8,23 +8,23 @@ namespace Core
 {
     public class PlayerBehaviour : ITickable, IBehaviour
     {
-        private readonly CharacterModel _characterModel;
-        private readonly CharacterMover _characterMover;
+        private readonly PlayerModel _playerModel;
+        private readonly PlayerMover _playerMover;
         private readonly CharacterAnimator _characterAnimator;
         private readonly IInputService _inputService;
         private CurrentState _currentState;
         private PlayerComponents _playerComponents;
         
-        private bool CanMove => _characterModel.IsAlive();
+        private bool CanMove => _playerModel.IsAlive();
 
         public PlayerBehaviour(
-            CharacterModel characterModel, 
-            CharacterMover characterMover, 
+            PlayerModel playerModel, 
+            PlayerMover playerMover, 
             CharacterAnimator characterAnimator, 
             IInputService inputService)
         {
-            _characterModel = characterModel;
-            _characterMover = characterMover;
+            _playerModel = playerModel;
+            _playerMover = playerMover;
             _characterAnimator = characterAnimator;
             _inputService = inputService;
         }
@@ -32,17 +32,19 @@ namespace Core
         public void Init(PlayerComponents playerComponents, PlayerConfig playerConfig)
         {
             _playerComponents = playerComponents;
-            _characterMover.Init(playerComponents.transform, playerComponents.CharacterController, playerConfig.MovementSpeed);
+            _playerMover.Init(playerComponents.transform, playerComponents.CharacterController, playerConfig.MovementSpeed);
             _characterAnimator.Init(playerComponents.Animator);
+
+            _playerModel.Transform = _playerComponents.transform;
         }
         
         public void Tick()
         {
             if (_currentState == CurrentState.Active)
             {
-                _characterMover.Move(_inputService.Direction);
-                _characterModel.CurrentSpeed = _playerComponents.CharacterController.velocity.magnitude;
-                _characterAnimator.SetSpeed(_characterModel.CurrentSpeed);
+                _playerMover.Move(_inputService.Direction);
+                _playerModel.CurrentSpeed = _playerComponents.CharacterController.velocity.magnitude;
+                _characterAnimator.SetSpeed(_playerModel.CurrentSpeed);
             }
         }
 

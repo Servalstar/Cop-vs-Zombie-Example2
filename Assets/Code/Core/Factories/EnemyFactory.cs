@@ -10,16 +10,16 @@ namespace Core.Factories
     {
         private readonly DiContainer _container;
         private readonly SpawnPoints _spawnPoints;
-        private readonly CameraMover _cameraMover;
+        private readonly TickableManager _tickableManager;
         private readonly Transform _uiRootTransform;
 
         private Transform _hudRootTransform;
 
-        protected EnemyFactory(DiContainer container, SpawnPoints spawnPoints, CameraMover cameraMover)
+        protected EnemyFactory(DiContainer container, SpawnPoints spawnPoints, TickableManager tickableManager)
         {
             _container = container;
             _spawnPoints = spawnPoints;
-            _cameraMover = cameraMover;
+            _tickableManager = tickableManager;
         }
 
         public async Task<EnemyBehaviour> Create() 
@@ -36,9 +36,10 @@ namespace Core.Factories
             var config = await configAsset;
 
             var enemyBehaviour = _container.Resolve<EnemyBehaviour>();
+
             enemyBehaviour.Init(enemyComponents, config);
             enemyBehaviour.Activate();
-
+            _tickableManager.Add(enemyBehaviour);
             return enemyBehaviour;
         }
     }

@@ -1,48 +1,53 @@
 using Configs;
 using Core.CommonForCharacters;
 using Core.CommonForCharacters.Contracts;
-using Services.Input.Contracts;
+using UnityEngine;
 using Zenject;
 
 namespace Core
 {
     public class EnemyBehaviour : ITickable, IBehaviour
     {
-        private readonly CharacterModel _characterModel;
-        private readonly CharacterMover _characterMover;
+        private readonly CharacterModel _enemyModel;
+        private readonly PlayerModel _playerModel;
+        private readonly EnemyMover _enemyMover;
         private readonly CharacterAnimator _characterAnimator;
-        private readonly IInputService _inputService;
         private CurrentState _currentState;
         private EnemyComponents _enemyComponents;
-        
-        private bool CanMove => _characterModel.IsAlive();
+        private EnemyConfig _enemyConfig;
+
+        private bool CanMove => _playerModel.Transform != null && _enemyModel.IsAlive() && IsHeroNotReached();
 
         public EnemyBehaviour(
-            CharacterModel characterModel, 
-            CharacterMover characterMover, 
-            CharacterAnimator characterAnimator, 
-            IInputService inputService)
+            CharacterModel enemyModel,
+            PlayerModel playerModel,
+            EnemyMover enemyMover, 
+            CharacterAnimator characterAnimator)
         {
-            _characterModel = characterModel;
-            _characterMover = characterMover;
+            _enemyModel = enemyModel;
+            _playerModel = playerModel;
+            _enemyMover = enemyMover;
             _characterAnimator = characterAnimator;
-            _inputService = inputService;
         }
 
         public void Init(EnemyComponents enemyComponents, EnemyConfig enemyConfig)
         {
+            _enemyConfig = enemyConfig;
             _enemyComponents = enemyComponents;
-            //_characterMover.Init(enemyComponents.transform, enemyComponents.CharacterController, playerConfig.MovementSpeed);
+            
+            _enemyMover.Init(enemyComponents.NavMeshAgent);
             _characterAnimator.Init(enemyComponents.Animator);
+            
+            _enemyModel.Init(enemyConfig.MaxHealth);
         }
         
         public void Tick()
         {
-            if (_currentState == CurrentState.Active)
+            if (_currentState == CurrentState.Active && CanMove)
             {
-                //_characterMover.Move(_inputService.Direction);
-                //_characterModel.CurrentSpeed = _playerComponents.CharacterController.velocity.magnitude;
-                //_characterAnimator.SetSpeed(_characterModel.CurrentSpeed);
+                _enemyMover.Move(_playerModel.Transform.position);
+                _enemyModel.CurrentSpeed = _enemyComponents.NavMeshAgent.velocity.magnitude;
+                _characterAnimator.SetSpeed(_enemyModel.CurrentSpeed);
             }
         }
 
@@ -54,6 +59,12 @@ namespace Core
         public void SetInactive()
         {
             _currentState = CurrentState.InActive;
+        }
+
+        private bool IsHeroNotReached()
+        {
+            var currentDistance = (_enemyComponents.transform.position - _playerModel.Transform.position).sqrMagnitude;
+            return currentDistance > Mathf.Pow(_enemyConfig.StopDistance, 2);
         }
 
         private enum CurrentState

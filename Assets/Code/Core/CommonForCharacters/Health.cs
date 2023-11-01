@@ -15,6 +15,7 @@ namespace Core.CommonForCharacters
 
         public void Init(float maxHealth)
         {
+            _maxHealth = maxHealth;
             Current = _maxHealth;
             HealthChanged?.Invoke();
         }

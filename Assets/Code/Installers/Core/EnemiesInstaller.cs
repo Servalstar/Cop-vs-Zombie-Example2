@@ -7,7 +7,7 @@ using Zenject;
 
 namespace Installers.Core
 {
-    public class EnemyInstaller : BaseAssetReferenceInstaller
+    public class EnemiesInstaller : BaseAssetReferenceInstaller
     {
         [SerializeField] private AssetReference _enemy;
 
@@ -19,7 +19,8 @@ namespace Installers.Core
             Container.BindInterfacesTo<EnemyFactory>().AsSingle();
             Container.Bind<EnemySpawner>().AsSingle();
             
-            Container.BindInterfacesAndSelfTo<EnemyBehaviour>().AsSingle();
+            Container.Bind<EnemyMover>().AsTransient();
+            Container.Bind<EnemyBehaviour>().AsTransient();
         }
     }
 }

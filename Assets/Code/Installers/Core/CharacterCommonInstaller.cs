@@ -9,8 +9,6 @@ namespace Installers.Core
         {
             Container.BindInterfacesTo<Health>().AsTransient();
             Container.Bind<CharacterModel>().AsTransient();
-
-            Container.Bind<CharacterMover>().AsTransient();
             Container.Bind<CharacterAnimator>().AsTransient();
         }
     }

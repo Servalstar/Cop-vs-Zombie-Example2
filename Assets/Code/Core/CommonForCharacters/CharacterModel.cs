@@ -10,6 +10,11 @@ namespace Core.CommonForCharacters
         
         public bool IsAlive() => Mathf.Approximately(0, Health.Current) == false;
 
+        public void Init(float maxHealth)
+        {
+            Health.Init(maxHealth);
+        }
+
         public CharacterModel(IHealth health)
         {
             Health = health;

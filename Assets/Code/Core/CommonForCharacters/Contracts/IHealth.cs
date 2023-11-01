@@ -7,5 +7,6 @@ namespace Core.CommonForCharacters.Contracts
         event Action HealthChanged;
         float Max { get; }
         float Current { get; }
+        void Init(float maxHealth);
     }
 }

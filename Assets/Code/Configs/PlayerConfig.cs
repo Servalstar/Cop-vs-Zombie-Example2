@@ -11,6 +11,8 @@ namespace Configs
         [SerializeField] private float _damage;
         [SerializeField] private float _cooldown;
         [SerializeField] private float _attackRadius;
+        [SerializeField] private float _maxSpeedForAttack;
+        [SerializeField] private string _attackLayerName;
 
 
         public float MovementSpeed => _movementSpeed;
@@ -22,5 +24,7 @@ namespace Configs
         public float Cooldown => _cooldown;
 
         public float AttackRadius => _attackRadius;
+        public float MaxSpeedForAttack => _maxSpeedForAttack;
+        public string AttackLayerName => _attackLayerName;
     }
 }

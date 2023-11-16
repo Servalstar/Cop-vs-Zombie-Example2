@@ -9,14 +9,14 @@ namespace Core
 {
     public class EnemySpawner
     {
-        private readonly ObjectPool<EnemyBehaviour> _enemiesPool;
+        private readonly ObjectPool<EnemyStateMachine> _enemiesPool;
         private readonly AsyncInject<EnemyConfig> _configAsset;
 
         private EnemyConfig _config;
         private CancellationTokenSource _source = new();
 
         public EnemySpawner(
-            ObjectPool<EnemyBehaviour> enemiesPool, 
+            ObjectPool<EnemyStateMachine> enemiesPool, 
             AsyncInject<EnemyConfig> configAsset,
             GameStateEvents gameStateEvents)
         {
@@ -44,7 +44,7 @@ namespace Core
             while (!token.IsCancellationRequested)
             {
                 var enemy = await _enemiesPool.Get();
-                enemy.Activate();
+                enemy.ChangeState(CharacterState.Move);
 
                 try
                 {

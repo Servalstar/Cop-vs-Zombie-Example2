@@ -6,7 +6,7 @@ using Zenject;
 
 namespace Core.Factories
 {
-    public class EnemyFactory : ICharacterFactory<EnemyBehaviour>
+    public class EnemyFactory : ICharacterFactory<EnemyStateMachine>
     {
         private readonly DiContainer _container;
         private readonly SpawnPoints _spawnPoints;
@@ -22,7 +22,7 @@ namespace Core.Factories
             _tickableManager = tickableManager;
         }
 
-        public async Task<EnemyBehaviour> Create() 
+        public async Task<EnemyStateMachine> Create() 
         {
             var prefabAsset = _container.Resolve<AsyncInject<EnemyComponents>>();
             var prefab = await prefabAsset;
@@ -35,7 +35,7 @@ namespace Core.Factories
             var configAsset = _container.Resolve<AsyncInject<EnemyConfig>>();
             var config = await configAsset;
 
-            var enemyBehaviour = _container.Resolve<EnemyBehaviour>();
+            var enemyBehaviour = _container.Resolve<EnemyStateMachine>();
 
             enemyBehaviour.Init(enemyComponents, config);
             enemyBehaviour.Activate();

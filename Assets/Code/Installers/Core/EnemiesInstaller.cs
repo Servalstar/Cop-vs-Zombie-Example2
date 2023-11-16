@@ -15,12 +15,12 @@ namespace Installers.Core
         {
             Container.BindAsync<EnemyComponents>().FromMethod(_ => LoadFromPrefab<EnemyComponents>(_enemy));
             
-            Container.Bind<ObjectPool<EnemyBehaviour>>().AsSingle();
+            Container.Bind<ObjectPool<EnemyStateMachine>>().AsSingle();
             Container.BindInterfacesTo<EnemyFactory>().AsSingle();
             Container.Bind<EnemySpawner>().AsSingle();
             
             Container.Bind<EnemyMover>().AsTransient();
-            Container.Bind<EnemyBehaviour>().AsTransient();
+            Container.Bind<EnemyStateMachine>().AsTransient();
         }
     }
 }

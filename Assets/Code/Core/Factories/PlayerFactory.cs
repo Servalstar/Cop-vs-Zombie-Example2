@@ -6,7 +6,7 @@ using Zenject;
 
 namespace Core.Factories
 {
-    public class PlayerFactory : ICharacterFactory<PlayerBehaviour>
+    public class PlayerFactory : ICharacterFactory<PlayerStateMachine>
     {
         private readonly DiContainer _container;
         private readonly SpawnPoints _spawnPoints;
@@ -22,7 +22,7 @@ namespace Core.Factories
             _cameraMover = cameraMover;
         }
 
-        public async Task<PlayerBehaviour> Create() 
+        public async Task<PlayerStateMachine> Create() 
         {
             var prefabAsset = _container.Resolve<AsyncInject<PlayerComponents>>();
             var prefab = await prefabAsset;
@@ -37,9 +37,9 @@ namespace Core.Factories
             var configAsset = _container.Resolve<AsyncInject<PlayerConfig>>();
             var config = await configAsset;
 
-            var playerBehaviour = _container.Resolve<PlayerBehaviour>();
-            playerBehaviour.Init(playerComponents, config);
-            playerBehaviour.Activate();
+            var playerBehaviour = _container.Resolve<PlayerStateMachine>();
+            playerBehaviour.InitStates(playerComponents, config);
+            playerBehaviour.ChangeState(CharacterState.Move);
 
             return playerBehaviour;
         }

@@ -17,3 +17,5 @@ MonoBehaviour:
   _damage: 10
   _cooldown: 1
   _attackRadius: 10
+  _maxSpeedForAttack: 0.1
+  _attackLayerName: Enemy

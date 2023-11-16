@@ -5012,7 +5012,7 @@ GameObject:
   - component: {fileID: 1988627800670348611}
   - component: {fileID: 5999261672193775548}
   - component: {fileID: 2280205162501077364}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Player
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5102,6 +5102,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _characterController: {fileID: 5999261672193775548}
   _animator: {fileID: 8619338777999598093}
+  _particles: {fileID: 5872563463437774039}
 --- !u!1 &8619338778009079855
 GameObject:
   m_ObjectHideFlags: 0

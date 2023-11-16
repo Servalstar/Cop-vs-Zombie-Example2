@@ -10,10 +10,10 @@ namespace Services.Bootstrap.BootSteps
     [CreateAssetMenu(menuName = "Bootstrap/BootSteps/CreatePlayerBootStep", fileName = "CreatePlayerBootStep")]
     public class CreatePlayerBootStep : BootStep
     {
-        private ICharacterFactory<PlayerBehaviour> _playerFactory;
+        private ICharacterFactory<PlayerStateMachine> _playerFactory;
 
         [Inject]
-        private void Construct(ICharacterFactory<PlayerBehaviour> playerFactory)
+        private void Construct(ICharacterFactory<PlayerStateMachine> playerFactory)
         {
             _playerFactory = playerFactory;
         }

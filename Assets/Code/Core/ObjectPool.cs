@@ -4,7 +4,7 @@ using Core.CommonForCharacters.Contracts;
 
 namespace Core
 {
-    public class ObjectPool<T> where T : IBehaviour
+    public class ObjectPool<T> where T : ICharacterStateMachine
     {
         private readonly ICharacterFactory<T> _factory;
         private readonly Stack<T> _objects = new();
@@ -16,7 +16,7 @@ namespace Core
 
         public int Count => _objects.Count;
 
-        public async Task<IBehaviour> Get()
+        public async Task<ICharacterStateMachine> Get()
         {
             if (_objects.Count > 0)
             {

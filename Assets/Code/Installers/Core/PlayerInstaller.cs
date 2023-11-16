@@ -17,10 +17,12 @@ namespace Installers.Core
             Container.BindAsync<PlayerComponents>().FromMethod(_ => LoadFromPrefab<PlayerComponents>(_player));
             Container.BindInterfacesTo<PlayerFactory>().AsSingle();
             
-            Container.Bind<PlayerMover>().AsTransient();
+            Container.Bind<PlayerMoveState>().AsTransient();
+            Container.Bind<PlayerAttackState>().AsTransient();
+            Container.Bind<PlayerDeathState>().AsTransient();
             Container.Bind<PlayerModel>().AsSingle();
 
-            Container.BindInterfacesAndSelfTo<PlayerBehaviour>().AsSingle();
+            Container.BindInterfacesAndSelfTo<PlayerStateMachine>().AsSingle();
 
             Container.Bind<CameraMover>().FromInstance(_cameraMover).AsSingle();
         }

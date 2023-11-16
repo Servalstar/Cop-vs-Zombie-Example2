@@ -2,11 +2,10 @@ using Configs;
 using Core.CommonForCharacters;
 using Core.CommonForCharacters.Contracts;
 using UnityEngine;
-using Zenject;
 
 namespace Core
 {
-    public class EnemyBehaviour : ITickable, IBehaviour
+    public class EnemyStateMachine : ICharacterStateMachine
     {
         private readonly CharacterModel _enemyModel;
         private readonly PlayerModel _playerModel;
@@ -18,7 +17,7 @@ namespace Core
 
         private bool CanMove => _playerModel.Transform != null && _enemyModel.IsAlive() && IsHeroNotReached();
 
-        public EnemyBehaviour(
+        public EnemyStateMachine(
             CharacterModel enemyModel,
             PlayerModel playerModel,
             EnemyMover enemyMover, 
@@ -49,6 +48,11 @@ namespace Core
                 _enemyModel.CurrentSpeed = _enemyComponents.NavMeshAgent.velocity.magnitude;
                 _characterAnimator.SetSpeed(_enemyModel.CurrentSpeed);
             }
+        }
+
+        public void ChangeState(CharacterState newState)
+        {
+            
         }
 
         public void Activate()
